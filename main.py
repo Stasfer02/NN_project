@@ -10,12 +10,11 @@ def main():
     # tokenize data
     myTokenizer = Tokenizer()
     test_data = CSV_data.iloc[0:4]      # test data to tokanize with (first 5 rows)
-    tokenized_data:pd.DataFrame = myTokenizer.tokenize_dataframe(test_data)
+    tokenized_data:pd.DataFrame = myTokenizer.tokenize_dataframe(CSV_data)
     tokenized_data.to_csv('tokenized_data.csv', index=False)
 
     # apply cross-validation to calculate train/test split
 
-    
 
 
 if __name__ == '__main__':
