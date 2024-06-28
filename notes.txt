@@ -1,0 +1,35 @@
+NOTES FOR DESIGN FROM THE PROJECT INSTRUCTIONS:
+
+
+- 1 ML method kiezen en deze proberen te optimaliseren, afzetten tegen linear regression bijv. 
+    NIET verschillende methoden vergelijken en met allemaal weinig de diepte in gaan.
+
+- rigoreus de data pre-processen (en evt post-processen) (Jelle doet dit)
+
+- gekozen methode correct en formeel beschrijven.
+
+- we kunnen packages gebruiken (zoals TensorFlow), maar we moeten dan wel echt duidelijk beschrijven wat de processen daadwerkelijk doen
+
+- veel graphics gebruiken.
+
+
+
+on the tokenizer:
+
+Now that we have split the title from the text, we need to tokenize the data, meaning; both title and text are split on word-level. 
+This is a necessary step, as our model does not "understand" sentences the way we do. By splitting the text up into meaningful units (these tokens)
+it can assign values to specific tokens that appear often in true/false words, and calculate the output accordingly.
+
+Our tokenization process consists of a few important steps:
+1. We expand contractions like "it's" and "can't" into "it is" and "can not" respectively. These need to be expanded as we will be removing
+all punctuation later on (step ...). This would leave us with "it" and "s" or "can" and "t" of which "s" and "t" are clearly not valid tokens.
+2. Tokenize the words by taking the spaces as seperators. 
+3. Re-visit tokens and remove any punctuation. For instance, the final words in the sentences include a ".".
+4. Make all tokens lowercase. Otherwise, a token at the start of a sentence does not correspond to the same token somewhere else in the sentence,
+even though they represent the exact same word.
+
+
+Now that we have our tokenized dataset, we can prepare it for being fed into the model. For this, we are gonna apply k-fold cross-validation,
+UITLEGGEN WAT HET IS EN HOE HET WERKT. 
+We will start with k = 10, following common guidelines (reference!). This is one of the hyperparameters we can tune based on the performance
+of the model. A higher k-value will generally be more accurate, but also more computationally expensive (reference).
